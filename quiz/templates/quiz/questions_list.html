@@ -1,0 +1,35 @@
+{% extends 'quiz/base.html' %} {% block content %}
+
+<h1><a href="/">Life in the UK Quiz</a></h1>
+<form action="" method="POST" role="form">
+  {% csrf_token %} {% for question in questions %}
+  <p>{{ question.question }}</p>
+  <input
+    type="radio"
+    id="quiz"
+    name="{{question.question}}"
+    value="{{question.op1}}"
+  /><label for="op1">{{ question.op1 }}</label><br />
+  <input
+    type="radio"
+    id="quiz"
+    name="{{question.question}}"
+    value="{{question.op2}}"
+  /><label for="op2">{{ question.op2 }}</label><br />
+  <input
+    type="radio"
+    id="quiz"
+    name="{{question.question}}"
+    value="{{question.op3}}"
+  /><label for="op3">{{ question.op3 }}</label><br />
+  <input
+    type="radio"
+    id="quiz"
+    name="{{question.question}}"
+    value="{{question.op4}}"
+  /><label for="op4">{{ question.op4 }}</label><br />
+  {% endfor %}
+  <br />
+  <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% endblock %}
