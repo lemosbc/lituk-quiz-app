@@ -31,7 +31,7 @@ def questions_list(request):
         }
         return render(request, 'quiz/results.html', context)
     else:
-        questions = QuesModel.objects.all()
+        questions = QuesModel.objects.all().order_by('?')
         return render(request, 'quiz/questions_list.html', {'questions' : questions})
 
 def results(request):
