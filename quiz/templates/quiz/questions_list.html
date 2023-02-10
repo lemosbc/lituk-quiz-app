@@ -1,35 +1,52 @@
 {% extends 'quiz/base.html' %} {% block content %}
-
+<div class="container mt-4 d-flex justify-content-center p-2">
+  <div>
+  <div class="mb-5">
 <h1><a href="/">Life in the UK Quiz</a></h1>
+</div>
+<div>
 <form action="" method="POST" role="form">
-  {% csrf_token %} {% for question in questions %}
-  <p>{{ question.question }}</p>
-  <input
-    type="radio"
-    id="quiz"
-    name="{{question.question}}"
-    value="{{question.op1}}"
-  /><label for="op1">{{ question.op1 }}</label><br />
-  <input
-    type="radio"
-    id="quiz"
-    name="{{question.question}}"
-    value="{{question.op2}}"
-  /><label for="op2">{{ question.op2 }}</label><br />
-  <input
-    type="radio"
-    id="quiz"
-    name="{{question.question}}"
-    value="{{question.op3}}"
-  /><label for="op3">{{ question.op3 }}</label><br />
-  <input
-    type="radio"
-    id="quiz"
-    name="{{question.question}}"
-    value="{{question.op4}}"
-  /><label for="op4">{{ question.op4 }}</label><br />
-  {% endfor %}
-  <br />
-  <button type="submit" class="btn btn-secondary">Submit</button>
+  
+    {% csrf_token %} {% for question in questions %}
+    <div class="mb-3 mt-3">
+    <p>{{ question.question }}</p>
+    </div>
+    <div class="mb-5">
+    <input
+      type="radio"
+      id="quiz"
+      name="{{question.question}}"
+      value="{{question.op1}}"
+      class="form-check-input"
+    /><label class="form-check-label" for="op1">{{ question.op1 }}</label><br />
+    <input
+      type="radio"
+      id="quiz"
+      name="{{question.question}}"
+      value="{{question.op2}}"
+      class="form-check-input"
+    /><label class="form-check-label" for="op2">{{ question.op2 }}</label><br />
+    <input
+      type="radio"
+      id="quiz"
+      name="{{question.question}}"
+      value="{{question.op3}}"
+      class="form-check-input"
+    /><label class="form-check-label" for="op3">{{ question.op3 }}</label><br />
+    <input
+      type="radio"
+      id="quiz"
+      name="{{question.question}}"
+      value="{{question.op4}}"
+      class="form-check-input"
+    /><label class="form-check-label" for="op4">{{ question.op4 }}</label><br />
+  </div>
+    {% endfor %}
+    
+    <button type="submit" class="btn flag-blue text-white">Submit</button>
+  </div>
+</div>
 </form>
+</div>
+</div>
 {% endblock %}

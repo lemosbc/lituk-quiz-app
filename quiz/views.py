@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import QuesModel
 from django.http import HttpResponse
-
+from random import shuffle
 
 
 # Create your views here.

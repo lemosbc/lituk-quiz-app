@@ -1,4 +1,25 @@
 {% extends 'quiz/base.html' %} {% block content %}
-<h1>Welcome to the Life in the UK Quiz</h1>
-<a href="{% url 'questions_list' %}" class="btn btn-secondary">Start Quiz</a>
+<div class="d-flex p-2 justify-content-center mt-5">
+  <div class="card text-center" style="width: 30rem">
+    <img
+      src="../../static/svg/Flag_of_Great_Britain_(1707–1800).svg"
+      class="card-img-top"
+      alt="Flag of the United Kingdom"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Welcome to the Life in the UK quiz</h5>
+      <p class="card-text mt-3">
+        You need to score 18 out of 24 questions to pass the test
+      </p>
+      <p>Good luck!</p>
+      <a
+        href="{% url 'questions_list' %}"
+        class="btn flag-blue text-white"
+        role="but"
+        >Start Quiz</a
+      >
+    </div>
+  </div>
+</div>
+
 {% endblock %}
