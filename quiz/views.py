@@ -31,7 +31,7 @@ def questions_list(request):
         }
         return render(request, 'quiz/results.html', context)
     else:
-        questions = QuesModel.objects.all().order_by('?')[:4] # Randomizes questions in database and selects the first 4
+        questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 4
         return render(request, 'quiz/questions_list.html', {'questions' : questions})
 
 def results(request):

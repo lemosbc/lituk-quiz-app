@@ -11,39 +11,43 @@
     <div class="mb-3 mt-3">
     <p>{{ question.question }}</p>
     </div>
-    <div class="mb-5">
+    <div class="mb-4">
+      <div class="py-1">
     <input
       type="radio"
       id="quiz"
       name="{{question.question}}"
       value="{{question.op1}}"
       class="form-check-input"
-    /><label class="form-check-label" for="op1">{{ question.op1 }}</label><br />
+    /><label class="form-check-label px-2" for="op1">{{ question.op1 }}</label><br /></div>
+    <div class="py-1">
     <input
       type="radio"
       id="quiz"
       name="{{question.question}}"
       value="{{question.op2}}"
       class="form-check-input"
-    /><label class="form-check-label" for="op2">{{ question.op2 }}</label><br />
+    /><label class="form-check-label px-2" for="op2">{{ question.op2 }}</label><br /></div>
+    <div class="py-1">
     <input
       type="radio"
       id="quiz"
       name="{{question.question}}"
       value="{{question.op3}}"
       class="form-check-input"
-    /><label class="form-check-label" for="op3">{{ question.op3 }}</label><br />
+    /><label class="form-check-label px-2" for="op3">{{ question.op3 }}</label><br /></div>
+    <div class="py-1">
     <input
       type="radio"
       id="quiz"
       name="{{question.question}}"
       value="{{question.op4}}"
       class="form-check-input"
-    /><label class="form-check-label" for="op4">{{ question.op4 }}</label><br />
+    /><label class="form-check-label px-2" for="op4">{{ question.op4 }}</label><br /></div>
   </div>
     {% endfor %}
     
-    <button type="submit" class="btn flag-blue text-white">Submit</button>
+    <button type="submit" class="btn flag-blue text-white mt-3">Submit</button>
   </div>
 </div>
 </form>
