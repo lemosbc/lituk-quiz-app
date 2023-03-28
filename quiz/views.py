@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 from django.views.generic.edit import CreateView
 
-from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -35,13 +35,7 @@ def questions_list(request):
         return render(request, 'quiz/results.html', context)
     else:
         questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
-        
-        # Set up pagination
-        pagination = Paginator(questions, 1)
-        page = request.GET.get('page')
-        questions_list = pagination.get_page(page)
-
-        return render(request, 'quiz/questions_list.html', {'questions_list' : questions_list})
+        return render(request, 'quiz/questions_list.html', {'questions' : questions})
 
 def results(request):
     return render(request, 'quiz/results.html')
