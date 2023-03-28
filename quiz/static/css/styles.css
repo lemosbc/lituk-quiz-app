@@ -11,3 +11,14 @@ a {
 .flag-blue {
   background-color: #012169;
 }
+
+label,
+input[type="radio"] {
+  padding: 5px;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.question-title {
+  font-weight: bold;
+}
