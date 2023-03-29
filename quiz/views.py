@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from .models import QuesModel, UserResults
 from django.http import HttpResponse
-
+from django.views import View
 from django.views.generic.edit import CreateView
-
-
 
 
 # Create your views here.
@@ -15,9 +13,15 @@ def home(request):
 def startquiz(request):
     return render(request, 'quiz/startquiz.html')
 
-def questions_list(request):
-    if request.method == 'POST':
-        print(request.POST)
+class QuestionsList(View):
+    form_class = QuesModel
+    
+   
+    def get(self, request, *args, **kwargs):
+        questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
+        return render(request, 'quiz/questions_list.html', {'questions' : questions})
+    
+    def post(self, request, *args, **kwargs):
         questions = QuesModel.objects.all()
         score = 0
         total = 0
@@ -33,16 +37,13 @@ def questions_list(request):
             'total': total
         }
         return render(request, 'quiz/results.html', context)
-    else:
-        questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
-        return render(request, 'quiz/questions_list.html', {'questions' : questions})
-
+        
 def results(request):
     return render(request, 'quiz/results.html')
 
 
-class SubmitResult(CreateView):
-    model = UserResults
-    result = questions_list
-    ##def get_result(request):
-    ##    if request.method == 'POST'
+#class SubmitResult(CreateView):
+#    model = UserResults
+#    result = QuestionsList
+#    def get_result(request):
+#    if request.method == 'POST'
