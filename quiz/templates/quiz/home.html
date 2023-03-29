@@ -1,0 +1,26 @@
+{% extends 'quiz/base.html' %} {% block content %}
+<div class="d-flex p-2 justify-content-center mt-5">
+  <div class="card text-center" style="width: 30rem">
+    <img
+      src="../../static/svg/Flag_of_Great_Britain_(1707–1800).svg"
+      class="card-img-top"
+      alt="Flag of the United Kingdom"
+    />
+    <div class="card-body">
+      <h5 class="card-title">Welcome to the Life in the UK quiz</h5>
+      <p class="card-text mt-3">
+        Test your knowledge to see if you are ready to sit the Life in the UK
+        test
+      </p>
+      <p>Login to get started</p>
+      </p>
+      <p><a href="{% url 'login' %}" class="btn flag-blue text-white" role="but"
+        >Login</a
+      ></p>
+      
+      <p>New user? <a href="{% url 'register' %}">Register here</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

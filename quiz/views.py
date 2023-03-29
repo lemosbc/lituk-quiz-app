@@ -9,8 +9,8 @@ from django.views.generic.edit import CreateView
 
 # Create your views here.
 
-def base(request):
-    return render(request, 'quiz/startquiz.html')
+def home(request):
+    return render(request, 'quiz/home.html')
 
 def startquiz(request):
     return render(request, 'quiz/startquiz.html')
