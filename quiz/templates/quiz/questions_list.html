@@ -1,4 +1,14 @@
 {% extends 'quiz/base.html' %} {% block content %}
+
+{% if request.user.is_authenticated %}
+<p>{{ request.user }}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+<hr>
+
 <div class="container mt-4 d-flex justify-content-center p-2">
   <div>
   <div class="mb-5">
@@ -7,10 +17,8 @@
 <div>
 <form action="" method="POST" role="form">
   
-    {% csrf_token %} {% for question in questions_list %}
+    {% csrf_token %} {% for question in questions %}
     <div class="mb-3 mt-3">
-    <h3>Question {{questions_list.number}} of {{questions_list.paginator.num_pages}}</h3>
-    <br>
     <p class="question-title">{{ question.question }}</p>
     </div>
     <div class="mb-4">
@@ -50,16 +58,8 @@
   
     {% endfor %}
     <div>
-    {% if questions_list.has_previous %}
-  
-    <a href="?page={{ questions_list.previous_page_number}}" class="btn flag-blue text-white mt-3" >Previous</a>
-    {% endif %}
-
-{% if questions_list.has_next %}
-  <a href="?page={{ questions_list.next_page_number}}" class="btn flag-blue text-white mt-3">Next</a>
-
-{% endif %}
-    <button type="submit" class="btn flag-blue text-white mt-3" name="quiz-submit" id="submit-btn">Submit</button>
+    
+    <button type="submit" class="btn flag-red text-white mt-3" name="quiz-submit" id="submit-btn">Submit</button>
   </div>
   </div>
 </div>

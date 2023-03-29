@@ -1,0 +1,14 @@
+{% extends 'quiz/base.html' %} {% block content %}
+
+<div class="container center">
+  <h1 class="mt-5 text-center">Register</h1>
+  <br />
+
+  <form method="POST">
+    {%csrf_token%} {{form.as_p}}
+    <input type="submit" value="Register" class="btn flag-blue text-white" />
+  </form>
+  <br />
+  <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}
