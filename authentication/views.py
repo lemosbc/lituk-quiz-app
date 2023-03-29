@@ -3,9 +3,18 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
+
+class CustomLoginView(LoginView):
+    template_name = 'authentication/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('startquiz')
 
 
 class RegisterPage(FormView):
@@ -25,7 +34,4 @@ class RegisterPage(FormView):
         if self.request.user.is_authenticated:
             return redirect('startquiz')
         return super(RegisterPage, self).get(*args, **kwargs)
-
-#def register(request):
-   # return render(request, 'authentication/register.html')
 
