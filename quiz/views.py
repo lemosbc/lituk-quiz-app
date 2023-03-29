@@ -7,8 +7,9 @@ from django.views.generic.edit import CreateView
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'quiz/home.html')
+class Home(View):
+    def get(self, request):
+        return render(request, 'quiz/home.html')
 
 def startquiz(request):
     return render(request, 'quiz/startquiz.html')
@@ -38,8 +39,9 @@ class QuestionsList(View):
         }
         return render(request, 'quiz/results.html', context)
         
-def results(request):
-    return render(request, 'quiz/results.html')
+class Results(View):
+    def get(self, request):
+        return render(request, 'quiz/results.html')
 
 
 #class SubmitResult(CreateView):
