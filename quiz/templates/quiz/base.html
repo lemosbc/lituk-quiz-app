@@ -17,14 +17,19 @@
   </head>
   <body>
     <nav>
-      <div class="container nav-container flag-blue">
-        <ul class="nav-list">
+      <div class="nav-container flag-blue">
+        <ul class="nav-list mx-5">
+          {% if request.user.is_authenticated %}
+          <li class="text-white">{{ request.user }}</li>
+          <li><a href="{% url 'logout' %}" class="nav-links">Logout</a></li>
+          {% else %}
           <li id="login">
             <a href="{% url 'login'%}" class="nav-links">Login</a>
           </li>
           <li id="register">
             <a href="{% url 'register'%}" class="nav-links">Register</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
