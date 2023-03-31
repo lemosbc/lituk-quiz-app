@@ -46,3 +46,7 @@ li {
   text-decoration: none;
   color: white;
 }
+
+ul.errorlist.nonfield {
+  list-style-type: none;
+}
