@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import QuesModel, UserResults
 from django.http import HttpResponse
 from django.views import View
-from django.views.generic.edit import CreateView
+
 
 
 # Create your views here.
@@ -46,9 +46,8 @@ class SubmitResult(QuestionsList):
         return
     
     def post(self, request, questions_list, *args, **kwargs):
-        score = questions_list.score
+        score = questions_list.attempt_score
         user_results = UserResults(request.POST)
-        user_results.user = request.user.username
         result = score
         user_results.result = result
         user_results.save()

@@ -16,7 +16,7 @@ class QuesModel(models.Model):
         return self.question
     
 class UserResults(models.Model):
-    user = models.CharField(max_length=100, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     result = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
 

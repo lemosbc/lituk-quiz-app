@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
-  {% block content %} {% endblock %}
+    <nav>
+      <div class="container nav-container flag-blue">
+        <ul class="nav-list">
+          <li id="login">
+            <a href="{% url 'login'%}" class="nav-links">Login</a>
+          </li>
+          <li id="register">
+            <a href="{% url 'register'%}" class="nav-links">Register</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
   </body>
 </html>

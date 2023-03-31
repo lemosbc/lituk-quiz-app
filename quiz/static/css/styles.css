@@ -26,3 +26,23 @@ input[type="radio"] {
 .question-title {
   font-weight: bold;
 }
+
+nav {
+  width: 100vw;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+li {
+  padding: 5px;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: white;
+}
