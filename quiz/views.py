@@ -10,24 +10,23 @@ from django.views.generic.edit import CreateView
 class Home(View):
     def get(self, request):
         return render(request, 'quiz/home.html')
-
-def startquiz(request):
-    return render(request, 'quiz/startquiz.html')
+    
+class StartQuiz(View):
+    def get(self, request):
+        return render(request, 'quiz/startquiz.html')
 
 class QuestionsList(View):
     form_class = QuesModel
     
-   
+       
     def get(self, request, *args, **kwargs):
         questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
         return render(request, 'quiz/questions_list.html', {'questions' : questions})
     
     def post(self, request, *args, **kwargs):
-        questions = QuesModel.objects.all()
         score = 0
-        total = 0
+        questions = QuesModel.objects.all()
         for question in questions:
-            total += 1
             print(request.POST.get(question.question))
             print(question.ans)
             print()
@@ -35,17 +34,29 @@ class QuestionsList(View):
                 score += 1
         context = { 
             'score': score,
-            'total': total
         }
+        
         return render(request, 'quiz/results.html', context)
+    
+class SubmitResult(QuestionsList):
+    form_class = UserResults
+    
+
+    def get(self, request, *args, **kwargs):
+        return
+    
+    def post(self, request, questions_list, *args, **kwargs):
+        score = questions_list.score
+        user_results = UserResults(request.POST)
+        user_results.user = request.user.username
+        result = score
+        user_results.result = result
+        user_results.save()
+        return
+    
         
 class Results(View):
     def get(self, request):
         return render(request, 'quiz/results.html')
 
 
-#class SubmitResult(CreateView):
-#    model = UserResults
-#    result = QuestionsList
-#    def get_result(request):
-#    if request.method == 'POST'

@@ -6,7 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('questions_list', QuestionsList.as_view(), name='questions_list'),
-    path('startquiz', startquiz, name='startquiz'),
+    path('startquiz', StartQuiz.as_view(), name='startquiz'),
     path('results', Results.as_view(), name='results')
 ]
 
