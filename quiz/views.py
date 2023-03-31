@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import QuesModel, UserResults
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Home(View):
     def get(self, request):
+        if self.request.user.is_authenticated:
+            return redirect('startquiz')
         return render(request, 'quiz/home.html')
 
 class StartQuiz(LoginRequiredMixin, View):
