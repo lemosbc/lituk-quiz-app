@@ -17,23 +17,23 @@ class StartQuiz(View):
 
 class QuestionsList(View):
     form_class = QuesModel
-    
+    score = 0
        
     def get(self, request, *args, **kwargs):
         questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
         return render(request, 'quiz/questions_list.html', {'questions' : questions})
     
     def post(self, request, *args, **kwargs):
-        score = 0
+        attempt_score = QuestionsList.score
         questions = QuesModel.objects.all()
         for question in questions:
             print(request.POST.get(question.question))
             print(question.ans)
             print()
             if question.ans == request.POST.get(question.question):
-                score += 1
+                attempt_score += 1
         context = { 
-            'score': score,
+            'attempt_score': attempt_score,
         }
         
         return render(request, 'quiz/results.html', context)
