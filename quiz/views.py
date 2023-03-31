@@ -2,20 +2,23 @@ from django.shortcuts import render
 from .models import QuesModel, UserResults
 from django.http import HttpResponse
 from django.views import View
-
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 class Home(View):
     def get(self, request):
         return render(request, 'quiz/home.html')
-    
-class StartQuiz(View):
+
+class StartQuiz(LoginRequiredMixin, View):
+    login_url = 'auth/login/'
     def get(self, request):
         return render(request, 'quiz/startquiz.html')
 
-class QuestionsList(View):
+class QuestionsList(LoginRequiredMixin,View):
+    login_url = 'auth/login/'
     form_class = QuesModel
     score = 0
        
