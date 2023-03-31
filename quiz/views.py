@@ -37,6 +37,7 @@ class QuestionsList(View):
         }
         
         return render(request, 'quiz/results.html', context)
+
     
 class SubmitResult(QuestionsList):
     form_class = UserResults
@@ -53,9 +54,5 @@ class SubmitResult(QuestionsList):
         user_results.save()
         return
     
-        
-class Results(View):
-    def get(self, request):
-        return render(request, 'quiz/results.html')
 
 
