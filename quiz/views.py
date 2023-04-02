@@ -34,27 +34,12 @@ class QuestionsList(LoginRequiredMixin,View):
             print()
             if question.ans == request.POST.get(question.question):
                 attempt_score += 1
+        id = request.user
+        user_results = UserResults(result = attempt_score, user_id = id )
+        user_results.save()
         context = { 
             'attempt_score': attempt_score,
         }
         
         return render(request, 'quiz/results.html', context)
-
     
-class SubmitResult(QuestionsList):
-    form_class = UserResults
-    
-
-    def get(self, request, *args, **kwargs):
-        return
-    
-    def post(self, request, questions_list, *args, **kwargs):
-        score = questions_list.attempt_score
-        user_results = UserResults(request.POST)
-        result = score
-        user_results.result = result
-        user_results.save()
-        return
-    
-
-

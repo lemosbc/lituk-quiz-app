@@ -16,13 +16,13 @@ class QuesModel(models.Model):
         return self.question
     
 class UserResults(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     result = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return (
-            f"{self.user} "
+            f"{self.user_id} "
             f"{self.result} "
             f"({self.created:%Y-%m-%d %H:%M}): "
         )
