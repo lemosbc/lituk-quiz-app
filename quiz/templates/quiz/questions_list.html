@@ -10,7 +10,8 @@
   
     {% csrf_token %} {% for question in questions %}
     <div class="mb-3 mt-3">
-    <p class="question-title">{{ question.question }}</p>
+      <h5>Question {{ forloop.counter }}</h5>
+    <h5 class="question-title">{{ question.question }}</h5>
     </div>
     <div class="mb-4">
       <div class="py-1">

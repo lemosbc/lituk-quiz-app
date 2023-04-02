@@ -20,18 +20,17 @@ class QuestionsList(LoginRequiredMixin,View):
     login_url = 'auth/login/'
     form_class = QuesModel
     score = 0
-       
+           
     def get(self, request, *args, **kwargs):
         questions = QuesModel.objects.all().order_by('?')[:24] # Randomizes questions in database and selects the first 24
         return render(request, 'quiz/questions_list.html', {'questions' : questions})
     
     def post(self, request, *args, **kwargs):
         attempt_score = QuestionsList.score
-        questions = QuesModel.objects.all()
+        questions = QuesModel.objects.all().order_by('?')[:24]
         for question in questions:
             print(request.POST.get(question.question))
             print(question.ans)
-            print()
             if question.ans == request.POST.get(question.question):
                 attempt_score += 1
         id = request.user
@@ -40,6 +39,7 @@ class QuestionsList(LoginRequiredMixin,View):
         context = { 
             'attempt_score': attempt_score,
         }
+        print(context)
         
         return render(request, 'quiz/results.html', context)
     
