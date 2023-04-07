@@ -67,12 +67,17 @@
  
             t = 2700 /* Sets a 45 min timer */
             setInterval(()=>{
-                --t
+                if (t > 0) {
+                  --t
                 var seconds = t % 60;
                 var secondsInMinutes = (t - seconds) / 60;
                 var minutes = secondsInMinutes % 60;
-                timer.innerHTML ="<b>Timer " + minutes + ":" + seconds;
+                timer.innerHTML ="<b>Timer " + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
                 inputTag.value = t
+                } else {
+                  clearInterval();
+                }
+                
             },1000)
 
             if (t == 0) {
