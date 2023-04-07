@@ -5,6 +5,7 @@
   <div class="mb-5">
 <h1><a href="/">Life in the UK Quiz</a></h1>
 </div>
+<div id="displaytimer"><b>Timer 45:00</b></div>
 <div>
 <form action="" method="POST" role="form">
   
@@ -49,6 +50,7 @@
   </div>
   
     {% endfor %}
+    <input id='timer' type='hidden' name="timer" value="">
     <div>
     
     <button type="submit" class="btn flag-red text-white mt-3" name="quiz-submit" id="submit-btn">Submit</button>
@@ -56,8 +58,29 @@
   </div>
 </div>
 </form>
+
+{% block script %}
+        <script>
+            const timer = document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputTag = document.getElementById('timer')
+ 
+            t = 2700 /* Sets a 45 min timer */
+            setInterval(()=>{
+                --t
+                var seconds = t % 60;
+                var secondsInMinutes = (t - seconds) / 60;
+                var minutes = secondsInMinutes % 60;
+                timer.innerHTML ="<b>Timer " + minutes + ":" + seconds;
+                inputTag.value = t
+            },1000)
+        </script>
+    {% endblock script %}
+
 </div>
 </div>
 
 
 {% endblock %}
+ 
+            

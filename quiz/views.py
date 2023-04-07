@@ -38,6 +38,7 @@ class QuestionsList(LoginRequiredMixin,View):
         user_results.save()
         context = { 
             'attempt_score': attempt_score,
+            'time' : request.POST.get('timer'),
         }
         print(context)
         
