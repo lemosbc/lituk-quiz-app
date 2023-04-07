@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 class="card-title">Results</h5>
       <p class="card-text">Score: {{ attempt_score }} / 24</p>
-      <p class="card-text">Time: {{ time }}</p>
+      <p class="card-text">Time {{ formatted_time }}</p>
       <a
         href="{% url 'questions_list' %}"
         class="btn flag-blue text-white"

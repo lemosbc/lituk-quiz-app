@@ -74,6 +74,10 @@
                 timer.innerHTML ="<b>Timer " + minutes + ":" + seconds;
                 inputTag.value = t
             },1000)
+
+            if (t == 0) {
+              alert("Time out");
+            }
         </script>
     {% endblock script %}
 

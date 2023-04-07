@@ -3,7 +3,7 @@ from .models import QuesModel, UserResults
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# Create your views here.
+
 
 class Home(View):
     def get(self, request):
@@ -36,9 +36,14 @@ class QuestionsList(LoginRequiredMixin,View):
         id = request.user
         user_results = UserResults(result = attempt_score, user_id = id )
         user_results.save()
+        time_taken = 2700 - int(request.POST.get('timer'))
+        seconds = time_taken % 60
+        seconds_in_minutes = (time_taken - seconds) / 60
+        minutes = int(seconds_in_minutes % 60)
+        formatted_time = '{:02d}:{:02d}'.format(minutes, seconds)
         context = { 
             'attempt_score': attempt_score,
-            'time' : request.POST.get('timer'),
+            'formatted_time' : formatted_time
         }
         print(context)
         
