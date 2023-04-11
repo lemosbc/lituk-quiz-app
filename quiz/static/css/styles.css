@@ -58,3 +58,8 @@ ul.errorlist {
   display: inline-block;
   border-radius: 5px;
 }
+
+.container {
+  max-width: 660px;
+  margin: auto;
+}
