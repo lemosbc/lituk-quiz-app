@@ -21,6 +21,7 @@
   
 <h2>Status</h2>
 <p>This application is currently under development.</p>
+<p>A live demo of the application can me seen at <a target="_blank" href="https://lemosbc.pythonanywhere.com/">https://lemosbc.pythonanywhere.com/</a>
   
 <h2>Stack</h2>
 <p>Built with Django, JavaScript and Bootstrap.</p>
