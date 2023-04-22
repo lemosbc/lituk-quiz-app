@@ -13,11 +13,13 @@
     <li> Citizenship and permanent residency processes </li>
   </ul>
   
-<p>UKReady simulates the test official test conditions. You have 45 minutes for each attempt and you have to correctly
-   answer at least 18 out 24 questions to pass the test. In each attempt the quiz will generate 24 random questions 
-   for you to answer.<p>
-     
-<p>At the end of every attempt you'll be displayed your score and the time it took you to complete the test.</p>
+<h3>Features</h3>
+  
+<p>UKReady simulates the test official test conditions. In each attempt the quiz will generate 24 random questions for the user to answer and a timer is set to 45 minutes. The user has to answer at least 18 out of the 24 questions correctly before the timer runs out to pass the test.</p>
+   
+<p>At the end of every attempt the user is displayed their score and the time it took them to complete the test.</p>
+
+<p>The application includes an authentication system and stores users scores for each attempt they've made.</p> 
   
 <h2>Status</h2>
 <p>This application is currently under development.</p>
