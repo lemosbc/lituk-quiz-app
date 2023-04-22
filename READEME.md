@@ -26,7 +26,7 @@
 <p>A live demo of the application can me seen at <a href="https://lemosbc.pythonanywhere.com/" target="_blank">https://lemosbc.pythonanywhere.com/</a>
   
 <h2>Stack</h2>
-<p>Built with Django, JavaScript and Bootstrap.</p>
+<p>Built with Django, JavaScript, Bootstrap and SQLite.</p>
   
 <h2>References</h2>
 <p>The questions used to develop this application have been taken from the Official Life in the UK learning materials.</p>
